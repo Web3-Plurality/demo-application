@@ -5,15 +5,71 @@ const App = () => {
     const childRef: any = useRef(null);
     const abi = '[{"inputs":[],"name":"retrieve","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"num","type":"uint256"}],"name":"store","outputs":[],"stateMutability":"nonpayable","type":"function"}]';
 
-    // Handle the data returned from the widget
-    const handleDataReturned = (data: any) => {
-        const receivedData = JSON.parse(JSON.stringify(data))
-        console.log("dapp receives:", receivedData);
-        alert(JSON.stringify(data));
-        childRef.current.closeSocialConnectPopup();
-        // Handle the received data in the external webpage
-        // ... (perform actions with the received data)
+    // Profile data handle
+    const handleProfileDataReturned = (data: any) => {
+      const receivedData = JSON.parse(JSON.stringify(data))
+      console.log("Get profile data:", receivedData);
+      alert(JSON.stringify(data));
+      childRef.current.closeSocialConnectPopup();
     };
+
+    // Web3 function handles
+    const handleGetAllAccounts = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Get all accounts:", receivedData);
+        alert(JSON.stringify(data));
+    };
+    const handleGetConnectedAccount = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Get connected account:", receivedData);
+        alert(JSON.stringify(data));
+    };
+    const handleMessageSignature = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Get message signature:", receivedData);
+        alert(JSON.stringify(data));
+    };
+    const handleVerifyMessageSignature = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Verify message signature:", receivedData);
+        alert(JSON.stringify(data));
+    };
+    const handleGetBalance = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Get balance:", receivedData);
+        alert(JSON.stringify(data));
+    };
+    const handleSendTransaction = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Send transaction:", receivedData);
+        alert(JSON.stringify(data));
+    };
+    const handleGetBlockNumber = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Get block number:", receivedData);
+        alert(JSON.stringify(data));
+    };
+    const handleGetTransactionCount = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Get transaction count:", receivedData);
+        alert(JSON.stringify(data));
+    };
+    const handleReadFromContract = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Read from contract:", receivedData);
+        alert(JSON.stringify(data));
+    };
+    const handleWriteToContract = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Write to contract:", receivedData);
+        alert(JSON.stringify(data));
+    };
+    const handleErrorMessage = (data: any) => {
+        const receivedData = JSON.parse(JSON.stringify(data))
+        console.log("Get error message:", receivedData);
+        alert(JSON.stringify(data));
+    };
+
 
     return (
       <div>
@@ -21,9 +77,19 @@ const App = () => {
             <h1>Social Connect Integration</h1>
             <PluralitySocialConnect
                 options={{ apps: 'facebook,twitter' }}
-                onDataReturned={handleDataReturned}
-                // all customization params are optional
-                // customization={{ height: '200px', width: '500px', initialBackgroundColor: '#E8A123', initialTextColor: '#FFFFFF', flipBackgroundColor: '#12AE83', flipTextColor: '#FFFFFF'}}
+                onProfileDataReturned={handleProfileDataReturned}
+                onGetAllAccounts={handleGetAllAccounts}
+                onGetConnectedAccount={handleGetConnectedAccount}
+                onGetMessageSignature={handleMessageSignature}
+                onVerifyMessageSignature={handleVerifyMessageSignature}
+                onGetBalance={handleGetBalance}
+                onSendTransaction={handleSendTransaction}
+                onGetBlockNumber={handleGetBlockNumber}
+                onGetTransactionCount={handleGetTransactionCount}
+                onReadFromContract={handleReadFromContract}
+                onWriteToContract={handleWriteToContract}
+                onErrorMessage={handleErrorMessage}
+                //customization={{ height: '200px', width: '500px', initialBackgroundColor: '#E8A123', initialTextColor: '#FFFFFF', flipBackgroundColor: '#12AE83', flipTextColor: '#FFFFFF'}}
                 ref={childRef}
             />
         </div>
